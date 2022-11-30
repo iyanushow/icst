@@ -1,6 +1,7 @@
 import Button from "../atoms/Button";
 import fetchData from "../../services/api";
 import { Suspense } from "react";
+import ErrorBoundary from "../ErrorBoundary";
 interface IFeaturedItem {
   id: string;
   code: string;
@@ -30,9 +31,11 @@ function FeaturedCourses() {
           See all Courses {">"}
         </Button>
       </div>
-      <Suspense fallback={<h1>Loading</h1>}>
-        <FeaturedList />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<h1>Loading</h1>}>
+          <FeaturedList />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }

@@ -6,6 +6,6 @@ const api = axios.create({
   baseURL: BASE_URL,
 });
 
-api.defaults.headers.common['Authorization'] = process.env.REACT_APP_AUTH_TOKEN
+api.defaults.headers.common['Authorization'] = ""
 
 export default api

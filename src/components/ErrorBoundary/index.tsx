@@ -1,16 +1,28 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-class ErrorBoundary extends React.Component {
-  state = { error: null };
+type State = {
+  error: Error | null;
+};
+
+class ErrorBoundary extends React.Component<{ children: ReactNode }, State> {
+  state: State = { error: null };
+
   static getDerivedStateFromError(error: Error) {
     return { error };
   }
-  componentDidCatch() {
-    // log the error to the server
+
+  componentDidCatch(error: Error) {
+    this.setState({
+      error: error,
+    });
   }
-  tryAgain = () => this.setState({ error: null });
+
   render() {
-    return this.state.error ? <div>Oops! An error occured</div> : null;
+    return this.state.error ? (
+      <div>Oops! An error occured</div>
+    ) : (
+      this.props.children
+    );
   }
 }
 

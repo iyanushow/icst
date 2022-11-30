@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import fetchData from "../../services/api";
 import Button from "../atoms/Button";
 import Carousel from "../atoms/Carousel";
+import ErrorBoundary from "../ErrorBoundary";
 
 interface ICategories {
   category: string;
@@ -15,7 +16,11 @@ function Categories() {
     <div className="pt-10 mt-11">
       <h3 className="text-2xl leading-7 font-semibold">Categories</h3>
       <div className="pt-6 mb-10">
-        <CourseContents />
+        <ErrorBoundary>
+          <Suspense fallback={<h1>Loading</h1>}>
+            <CourseContents />
+          </Suspense>
+        </ErrorBoundary>
       </div>
       <Button size="lg" className="bg-teal ml-auto mr-[62px]">
         See all Courses {">"}
@@ -46,9 +51,5 @@ function CourseContents() {
     );
   });
 
-  return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      <Carousel Items={carouselItems} />
-    </Suspense>
-  );
+  return <Carousel Items={carouselItems} />;
 }
