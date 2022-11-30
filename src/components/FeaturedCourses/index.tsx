@@ -1,35 +1,25 @@
 import Button from "../atoms/Button";
+import fetchData from "../../services/api";
+import { Suspense } from "react";
+interface IFeaturedItem {
+  id: string;
+  code: string;
+  version: string | null;
+  institution_id: string | null;
+  semester: string | null;
+  name: string;
+  level?: string;
+  course_pacing?: string;
+  enrollment_type?: string;
+  language?: string;
+  thumbnail?: string;
+  card_image?: string;
+  price?: string;
+  instructors: string[];
+  subcategory_id?: string;
+}
 
-const items = [
-  {
-    id: 1,
-    title: "MITX-LAUNCHX",
-    subtext: "Becoming An Entrepreneur",
-    groups: ["Amazon Service", "Martin Caulpepper"],
-    imageUrl: "images/feat1.jpg",
-  },
-  {
-    id: 2,
-    title: "MITX-LAUNCHX",
-    subtext: "Becoming An Entrepreneur",
-    groups: ["Amazon Service", "Martin Caulpepper"],
-    imageUrl: "images/feat2.jpg",
-  },
-  {
-    id: 3,
-    title: "MITX-LAUNCHX",
-    subtext: "Becoming An Entrepreneur",
-    groups: ["Amazon Service", "Martin Caulpepper"],
-    imageUrl: "images/feat3.jpg",
-  },
-  {
-    id: 4,
-    title: "MITX-LAUNCHX",
-    subtext: "Becoming An Entrepreneur",
-    groups: ["Amazon Service", "Martin Caulpepper"],
-    imageUrl: "images/feat4.jpg",
-  },
-];
+const getFeaturedCourses = fetchData<IFeaturedItem[]>("/featured-course-list");
 
 function FeaturedCourses() {
   return (
@@ -40,42 +30,47 @@ function FeaturedCourses() {
           See all Courses {">"}
         </Button>
       </div>
-      <div className="grid grid-cols-4 gap-4 mt-6">
-        {items.map(item => (
-          <FeatureItem {...item} />
-        ))}
-      </div>
+      <Suspense fallback={<h1>Loading</h1>}>
+        <FeaturedList />
+      </Suspense>
     </div>
   );
 }
 
 export default FeaturedCourses;
 
-type IFeatureItem = {
-  imageUrl: string;
-  title: string;
-  subtext: string;
-  groups: string[];
-};
+function FeaturedList() {
+  const data = getFeaturedCourses.read();
 
-function FeatureItem({ imageUrl, title, subtext, groups }: IFeatureItem) {
+  return (
+    <div className="grid grid-cols-4 gap-4 mt-6">
+      {data.slice(0, 4).map(course => (
+        <FeatureItem key={course.id} {...course} />
+      ))}
+    </div>
+  );
+}
+
+function FeatureItem({ card_image, name, code, instructors }: IFeaturedItem) {
   return (
     <div className="rounded w-[222px] h-[251px]">
       <figure>
         <img
-          src={imageUrl}
-          alt={title}
+          src={card_image}
+          alt={code}
           className="w-full h-[123px] rounded-t"
         />
       </figure>
       <div className="p-2.5 border-[0.2px] border-gray rounded-b">
         <div className="px-4 py-[11px]">
           <h4 className="font-bold text-sm leading-4 text-primary-300">
-            {title}
+            {code}
           </h4>
-          <h5 className="text-xs font-semibold text-primary-300">{subtext}</h5>
-          <div className="pt-[3px]">
-            {groups.map((group, i) => (
+          <h5 className="text-xs font-semibold text-primary-300 truncate">
+            {name}
+          </h5>
+          <div className="pt-[3px] min-h-[32px]">
+            {instructors.map((group, i) => (
               <span key={i} className="block text-[11px] leading-4 font-light">
                 {group}
               </span>

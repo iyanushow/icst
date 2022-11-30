@@ -1,6 +1,8 @@
-import React from "react";
-import { ChevronDown, Search } from "react-feather";
 import Button from "../atoms/Button";
+import {
+  ChevronDownIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 
 function Navigation() {
   return (
@@ -23,27 +25,21 @@ export default Navigation;
 function Menu() {
   const menuItems = ["courses", "programs", "Learning Pathways", "Partnership"];
   return (
-    <nav className="flex">
+    <nav className="flex gap-[30px] items-center">
       {menuItems.map(menu => (
-        <MenuItem>{menu}</MenuItem>
+        <div className="flex text-sm leading-4 font-semibold items-center gap-[3.75px]">
+          <span>{menu}</span>
+          <ChevronDownIcon className="w-[15px] stroke-2" />
+        </div>
       ))}
     </nav>
-  );
-}
-
-function MenuItem(props: { children?: string }) {
-  return (
-    <div className="flex">
-      <span>{props.children}</span>
-      <ChevronDown />
-    </div>
   );
 }
 
 function Toolbar() {
   return (
     <div className="ml-auto flex items-center">
-      <Search className="w-[17px] h-4" />
+      <MagnifyingGlassIcon className="w-[17px] h-4" />
 
       <div className="ml-[15px] flex gap-[11px]">
         <Button variant="outline" className="border-black text-black">

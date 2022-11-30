@@ -10,6 +10,12 @@
 @tailwind components;
 @import url("./custom.css");
 @layer components {
+  .line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
 }
 
 @tailwind utilities;

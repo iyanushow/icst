@@ -2,11 +2,15 @@ import Categories from "./components/Categories";
 import FeaturedCourses from "./components/FeaturedCourses";
 import HeroSection from "./components/Hero";
 import Navigation from "./components/Navigation";
+import { QueryClient, QueryClientProvider } from "react-query";
+
 import "./styles/index.css";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Navigation />
       <div className="pt-[83px]">
         <HeroSection />
@@ -15,7 +19,7 @@ function App() {
           <Categories />
         </div>
       </div>
-    </>
+    </QueryClientProvider>
   );
 }
 
