@@ -1,0 +1,11 @@
+.alice-carousel__stage {
+  display: flex;
+  align-items: stretch;
+  padding: 20px 0;
+  gap: 26px;
+}
+
+.alice-carousel__stage-item {
+  height: auto;
+  display: inline-flex;
+}

@@ -6,11 +6,18 @@ module.exports = {
       inherit: "inherit",
       transparent: "transparent",
       currentColor: "currentColor",
-      gray: "#F6F6F6",
       black: "#000000",
       white: "#FFFFFF",
-      "bright-green": "#01CF95",
-      green: "#03614B",
+      primary: {
+        100: "#00C781",
+        200: "#115718",
+        300: "#00873D",
+        DEFAULT: "#115718",
+      },
+      red: "#FF4040",
+      yellow: "#FFAA15",
+      teal: "#00798C",
+      gray: "#999999",
     },
     extend: {
       boxShadow: {
@@ -19,6 +26,10 @@ module.exports = {
       fontFamily: {
         raleway: ["Raleway", "Arial", "sans-serif"],
         inter: ["Inter", "serif"],
+      },
+      borderRadius: {
+        DEFAULT: 15,
+        lg: 100,
       },
     },
   },
