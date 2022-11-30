@@ -39,7 +39,7 @@ function Menu() {
 function Toolbar() {
   return (
     <div className="ml-auto flex items-center">
-      <MagnifyingGlassIcon className="w-[17px] h-4" />
+      <MagnifyingGlassIcon className="w-[17px] h-4 stroke-2" />
 
       <div className="ml-[15px] flex gap-[11px]">
         <Button variant="outline" className="border-black text-black">
