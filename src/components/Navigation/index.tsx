@@ -27,7 +27,9 @@ function Menu() {
   return (
     <nav className="flex gap-[30px] items-center">
       {menuItems.map(menu => (
-        <div className="flex text-sm leading-4 font-semibold items-center gap-[3.75px]">
+        <div
+          key={menu}
+          className="flex text-sm leading-4 font-semibold items-center gap-[3.75px]">
           <span>{menu}</span>
           <ChevronDownIcon className="w-[15px] stroke-2" />
         </div>
