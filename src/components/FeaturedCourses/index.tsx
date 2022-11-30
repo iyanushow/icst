@@ -43,7 +43,7 @@ function FeaturedList() {
   const data = getFeaturedCourses.read();
 
   return (
-    <div className="grid grid-cols-4 gap-4 mt-6">
+    <div className="grid grid-cols-1 justify-items-center md:grid-cols-4 gap-4 mt-6">
       {data.slice(0, 4).map(course => (
         <FeatureItem key={course.id} {...course} />
       ))}

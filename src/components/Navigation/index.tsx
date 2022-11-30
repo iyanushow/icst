@@ -6,7 +6,7 @@ import {
 
 function Navigation() {
   return (
-    <div className="bg-white shadow-main py-[27px] pl-[15px] pr-6 w-full fixed">
+    <div className="bg-white shadow-main py-[27px] pl-[15px] pr-6 w-full relative z-50 overflow-hidden">
       <div className="w-full flex gap-8 items-center">
         <div className="pl-[17px] pr-[21px]">
           <h1 className="font-inter font-bold text-2xl text-primary-200 leading-[29px]">

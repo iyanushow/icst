@@ -12,8 +12,7 @@ function Carousel({ Items }: ICarousel) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative px-[62px]">
-      {/* <div> */}
+    <div className="relative px-6 md:px-[62px]">
       <AliceCarousel
         autoWidth
         mouseTracking
@@ -23,7 +22,6 @@ function Carousel({ Items }: ICarousel) {
         activeIndex={activeIndex}
         onSlideChanged={({ item }) => setActiveIndex(item)}
       />
-      {/* </div> */}
 
       <CarouselButton
         handleClick={() => setActiveIndex(activeIndex - 1)}
@@ -53,7 +51,7 @@ function CarouselButton({
 }) {
   return (
     <button
-      className={`rounded-[50%] w-[50px] h-[50px] bg-gradient-to-l from-[#555555] to-[#333333] absolute top-1/2 -translate-y-1/2 ${className}`}
+      className={`rounded-[50%] w-8 md:w-[50px] h-8 md:h-[50px] bg-gradient-to-l from-[#555555] to-[#333333] absolute top-1/2 -translate-y-1/2 ${className}`}
       onClick={handleClick}>
       {children}
     </button>

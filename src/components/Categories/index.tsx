@@ -36,7 +36,7 @@ function CourseContents() {
       <div className="bg-gradient-to-b from-[#555555] to-[#777777] shadow-main rounded w-[265px] font-bold text-sm leading-4 flex flex-col justify-between">
         <div className="pt-[58px] px-6 pb-[45px] text-white">
           <h6 className="font-semibold">{category}</h6>
-          <div className="font-light line-clamp">{subCat}</div>
+          <div className="font-light line-clamp mt-4">{subCat}</div>
         </div>
         <div className="bg-white flex justify-between items-center rounded py-[15px] px-6">
           <span>Category</span>

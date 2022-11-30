@@ -12,9 +12,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Navigation />
-      <div className="pt-[83px]">
+      <div className="pb-4">
         <HeroSection />
-        <div className="mt-[47px] max-w-[980px] mx-auto">
+        <div className="mt-[47px] max-w-[980px] mx-auto px-2">
           <FeaturedCourses />
           <Categories />
         </div>
